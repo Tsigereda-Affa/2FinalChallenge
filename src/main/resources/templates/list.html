@@ -2,9 +2,54 @@
 <html lang="en" xmlns:th="www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
-    <title>$Title$</title>
+    <meta http-equiv="x-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"  />
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous" />
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <title>Title</title>
 </head>
 <body>
-$END$
+<!--<div th:replace="base :: nav"></div>-->
+
+
+
+<div class="container">
+    <table class="table table-striped">
+        <div align="center">
+            <a > Welcome To Bullhorn </a><br />
+
+        </div>
+
+
+        <tr>
+            <th>Content</th>
+            <th>Sent By</th>
+            <th>Date</th>
+            <th>Profiles</th>
+        </tr>
+        <tr th:each="message : ${messages}">
+            <td th:text="${message.content}"></td>
+            <td th:text="${message.sentby}"></td>
+            <td th:text="${message.posteddate}"></td>
+            <td>
+                <!--<a th:href="@{/update/{id}(id=${employee.id})}">Update</a>-->
+                <!--<a th:href="@{/profile/{id}(id=${user.id})}">Profile</a>-->
+                <!--<a th:href="@{/delete/{id}(id=${employee.id})}">Delete</a>-->
+
+            </td>
+        </tr>
+        <a href="/login">Login</a><br />
+        <a href="/addRegistration">Register</a>
+
+    </table>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 </body>
 </html>

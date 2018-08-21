@@ -32,6 +32,10 @@ public class User {
     @Column(name= "username")
     private String username;
 
+//    @Column(name= "hobby")
+//    private String hobby;
+
+
     public User(String email, String password, String firstName, String lastName, boolean enabled, String username) {
         this.email = email;
         this.password = password;
@@ -68,11 +72,7 @@ public class User {
     }
 
     public String getPassword() {
-        // THIS IS COMMENTED OUT FOR L21 TO RETURN ONLY PASSWORD SINCE ....
-//        PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-//        String hashedPassword = passwordEncoder.encode(password);
-//        System.out.println(hashedPassword);
-//        this.password = hashedPassword;
+
         return password;
     }
 
@@ -119,4 +119,12 @@ public class User {
     public void setRoles(Collection<Role> roles) {
         this.roles = roles;
     }
+
+//    public String getHobby() {
+//        return hobby;
+//    }
+//
+//    public void setHobby(String hobby) {
+//        this.hobby = hobby;
+//    }
 }

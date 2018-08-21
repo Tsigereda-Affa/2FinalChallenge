@@ -1,4 +1,11 @@
 package com.example.demo;
 
-public class MessageRepository {
+import org.springframework.data.repository.CrudRepository;
+
+import java.util.ArrayList;
+
+public interface MessageRepository extends CrudRepository<Message, Long> {
+
+    ArrayList<Message> findByUsername(String username);
+
 }
