@@ -2,6 +2,7 @@ package com.example.demo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -44,23 +45,29 @@ public class HomeController {
             model.addAttribute("message",
                     "User Account Successfully Created");
         }
-        return "index";
-    }
+        return "login";
+}
 
     @RequestMapping("/")
     public String listUsers(Model model) {
         model.addAttribute("messages", messageRepository.findAll());
         return "list";
     }
+    @GetMapping("/login")
+    public String login(Model model) {
 
-    @RequestMapping("/login")
+        model.addAttribute("user", new User());
+        return "login";
+    }
+
+    @PostMapping("/processLogin")
     public String login(@Valid User user, BindingResult result, Model model) {
         if (result.hasErrors()) {
-//            model.addAttribute("messages", messageRepository.findAll());
+
             return "login";
         }
         userRepository.save(user);
-        return "redirect:/addMessage";
+        return "redirect:/add";
     }
 
     @RequestMapping("/secure")
@@ -75,37 +82,47 @@ public class HomeController {
         return "secure";
     }
 
-    @GetMapping("/addRegistration")
-    public String registrationForm(Model model) {
-//        model.addAttribute("messages", messageRepository.findAll());
-        model.addAttribute("user", new User());
-        return "registration";
-    }
+//    @GetMapping("/addRegistration")
+//    public String registrationForm(Model model) {
+////        model.addAttribute("messages", messageRepository.findAll());
+//        model.addAttribute("user", new User());
+//        return "registration";
+//    }
+//
+//    @PostMapping("/processRegistration")
+//    public String processRegistrationForm(@Valid User user, BindingResult result, Model model) {
+//        if (result.hasErrors()) {
+////            model.addAttribute("messages", messageRepository.findAll());
+//            return "registration";
+//        }
+//        userRepository.save(user);
+//        return "redirect:/";
+//    }
 
-    @PostMapping("/processRegistration")
-    public String processRegistrationForm(@Valid User user, BindingResult result, Model model) {
-        if (result.hasErrors()) {
-//            model.addAttribute("messages", messageRepository.findAll());
-            return "registration";
-        }
-        userRepository.save(user);
-        return "redirect:/";
-    }
-
-    @GetMapping("/addMessage")
+    @GetMapping("/add")
     public String messageForm(Model model) {
         model.addAttribute("message", new Message());
         return "messageform";
     }
 
     @PostMapping("/processMessage")
-    public String processMessageForm(@Valid Message message, BindingResult result, Model model) {
+    public String processForm(@ModelAttribute Message message, BindingResult result, Model model)
+    {
+//        String username = getUser().getUsername();
+//        message.setUsername(username);
+//        messageRepository.save(message);
+//        model.addAttribute("messages", messageRepository.findByUsername(username));
+//        return "";
+
         if (result.hasErrors()) {
 
             return "messageform";
         }
+        String username = getUser().getUsername();
+        message.setUsername(username);
         messageRepository.save(message);
-        return "redirect:/";
+        model.addAttribute("messages", messageRepository.findByUsername(username));
+        return "redirect:/addMessage";
 
     }
 
@@ -124,4 +141,10 @@ public class HomeController {
 //        model.addAttribute("user", userRepository.findById(id).get());
 //        return "show";
    // }
+private User getUser(){
+    Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+    String currentusername = authentication.getName();
+    User user = userRepository.findByUsername(currentusername);
+    return user;
+    }
 }
