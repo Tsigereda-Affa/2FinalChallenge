@@ -56,19 +56,19 @@ public class HomeController {
     @GetMapping("/login")
     public String login(Model model) {
 
-        model.addAttribute("user", new User());
+        //model.addAttribute("user", new User());
         return "login";
     }
 
-    @PostMapping("/processLogin")
-    public String login(@Valid User user, BindingResult result, Model model) {
-        if (result.hasErrors()) {
-
-            return "login";
-        }
-        userRepository.save(user);
-        return "redirect:/add";
-    }
+//    @PostMapping("/processLogin")
+//    public String login(@Valid User user, BindingResult result, Model model) {
+//        if (result.hasErrors()) {
+//
+//            return "login";
+//        }
+//        userRepository.save(user);
+//        return "redirect:/add";
+//    }
 
     @RequestMapping("/secure")
     public String secure(HttpServletRequest request,
@@ -122,7 +122,7 @@ public class HomeController {
         message.setUsername(username);
         messageRepository.save(message);
         model.addAttribute("messages", messageRepository.findByUsername(username));
-        return "redirect:/addMessage";
+        return "redirect:/add";
 
     }
 
