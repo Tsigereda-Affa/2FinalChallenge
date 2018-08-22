@@ -60,15 +60,15 @@ public class HomeController {
         return "login";
     }
 
-//    @PostMapping("/processLogin")
-//    public String login(@Valid User user, BindingResult result, Model model) {
-//        if (result.hasErrors()) {
-//
-//            return "login";
-//        }
-//        userRepository.save(user);
-//        return "redirect:/add";
-//    }
+    @PostMapping("/processLogin")
+    public String login(@Valid User user, BindingResult result, Model model) {
+        if (result.hasErrors()) {
+
+            return "login";
+        }
+        userRepository.save(user);
+        return "redirect:/";
+    }
 
     @RequestMapping("/secure")
     public String secure(HttpServletRequest request,
@@ -126,11 +126,12 @@ public class HomeController {
 
     }
 
-//    @RequestMapping("/update/{id}")
-//    public String userUpdate(@PathVariable("id") long id, Model model) {
-//        model.addAttribute("message", messageRepository.findById(id).get());
-//        return "message";
-//    }
+    @RequestMapping("/edit/{username}")
+    public String userUpdate(@PathVariable("username") String username, Model model) {
+        model.addAttribute("user", userService.getCurrentUser());
+        model.addAttribute("user", messageRepository.findByUsername(username));
+        return "registration";
+    }
 //    @RequestMapping("/delete/{id}")
 //    public String delMessage(@PathVariable("id") long id){
 //        messageRepository.deleteById(id);

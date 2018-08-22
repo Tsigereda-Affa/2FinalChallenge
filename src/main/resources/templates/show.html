@@ -11,5 +11,7 @@ last Name: <span th:text="${user.lastName}"></span> <br />
 <!--Gravatar url: <span th:text="${user.gravatar}"></span> <br />-->
 Email: <span th:text="${user.email}"></span> <br />
 Hobby: <span th:text="${user.hobby}"></span> <br />
+
+<a th:href="@{/edit/{id}(id=${user.username})}">Edit</a>
 </body>
 </html>
