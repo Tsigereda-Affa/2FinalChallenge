@@ -6,6 +6,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.persistence.*;
 import java.util.Collection;
+import java.util.Set;
 
 @Entity
 @Table(name="USER_DATA")
@@ -32,8 +33,8 @@ public class User {
     @Column(name= "username")
     private String username;
 
-//    @Column(name= "hobby")
-//    private String hobby;
+    @Column(name= "hobby")
+    private String hobby;
 
 
     public User(String email, String password, String firstName, String lastName, boolean enabled, String username) {
@@ -53,7 +54,18 @@ public class User {
     inverseJoinColumns = @JoinColumn(name ="role_id"))
     private Collection<Role> roles;
 
-
+//    @OneToMany(mappedBy = "user",
+//         cascade = CascadeType.ALL,
+//         fetch= FetchType.EAGER)
+//    public Set<Message> messages;
+//
+//    public Set<Message> getMessages() {
+//        return messages;
+//    }
+//
+//    public void setMessages(Set<Message> messages) {
+//        this.messages = messages;
+ //   }
 
     public long getId() {
         return id;
@@ -62,6 +74,9 @@ public class User {
     public void setId(long id) {
         this.id = id;
     }
+
+
+
 
     public String getEmail() {
         return email;
@@ -120,11 +135,11 @@ public class User {
         this.roles = roles;
     }
 
-//    public String getHobby() {
-//        return hobby;
-//    }
-//
-//    public void setHobby(String hobby) {
-//        this.hobby = hobby;
-//    }
+    public String getHobby() {
+        return hobby;
+    }
+
+    public void setHobby(String hobby) {
+        this.hobby = hobby;
+    }
 }

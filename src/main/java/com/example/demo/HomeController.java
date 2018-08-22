@@ -136,11 +136,12 @@ public class HomeController {
 //        messageRepository.deleteById(id);
 //        return "redirect:/secure";
 //    }
-//    @RequestMapping("/profile/{id}")
-//    public String userProfile(@PathVariable("id") long id, Model model) {
-//        model.addAttribute("user", userRepository.findById(id).get());
-//        return "show";
-   // }
+    @RequestMapping("/profile/{username}")
+    public String userProfile(@PathVariable("username") String username, Model model) {
+        username = userService.getCurrentUser().getUsername();
+        model.addAttribute("user", userRepository.findByUsername(username));
+        return "show";
+    }
 private User getUser(){
     Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
     String currentusername = authentication.getName();

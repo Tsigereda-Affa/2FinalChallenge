@@ -28,13 +28,13 @@
     <input type="text" id="email" placeholder="Email"
            th:field="*{email}" /><br />
 
-    <!--Hobby <mark><strong>-->
-    <!--<span th:if="${#fields.hasErrors('hobby')}"-->
-          <!--th:errors="*{hobby}">Email Error</span>-->
-<!--</strong></mark>-->
-    <!--<input type="text" id="hobby" placeholder="Hobby"-->
-           <!--th:field="*{hobby}" /><br />-->
-    <!---->
+    Hobby <mark><strong>
+    <span th:if="${#fields.hasErrors('hobby')}"
+          th:errors="*{hobby}">Email Error</span>
+</strong></mark>
+    <input type="text" id="hobby" placeholder="Hobby"
+           th:field="*{hobby}" /><br />
+
 
     Username <mark><strong>
      <span th:if="${#fields.hasErrors('username')}"

@@ -40,7 +40,8 @@
             <td th:text="${message.posteddate}"></td>
             <td>
                 <!--<a th:href="@{/update/{id}(id=${employee.id})}">Update</a>-->
-                <!--<a th:href="@{/profile/{id}(id=${user.id})}">Profile</a>-->
+                <!--<a th:href="@{/detail/{id}(id=${message.user.id})}">Profile</a>-->
+                <a th:href="@{/profile/{id}(id=${message.username})}">Profile</a>
                 <!--<a th:href="@{/delete/{id}(id=${employee.id})}">Delete</a>-->
 
             </td>
