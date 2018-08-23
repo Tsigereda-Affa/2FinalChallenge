@@ -45,7 +45,7 @@ public class HomeController {
             model.addAttribute("message",
                     "User Account Successfully Created");
         }
-        return "login";
+        return "redirect:/";
 }
 
     @RequestMapping("/")
@@ -130,7 +130,7 @@ public class HomeController {
     public String userUpdate(@PathVariable("username") String username, Model model) {
 //        model.addAttribute("user", userService.getCurrentUser());
 //        model.addAttribute("user", messageRepository.findByUsername(username));
-        username = userService.getCurrentUser().getUsername();
+//        username = userService.getCurrentUser().getUsername();
         model.addAttribute("user", userRepository.findByUsername(username));
         return "registration";
     }
@@ -141,7 +141,7 @@ public class HomeController {
 //    }
     @RequestMapping("/profile/{username}")
     public String userProfile(@PathVariable("username") String username, Model model) {
-        username = userService.getCurrentUser().getUsername();
+//        username = userService.getCurrentUser().getUsername();
         model.addAttribute("user", userRepository.findByUsername(username));
         return "show";
     }
