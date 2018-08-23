@@ -6,6 +6,7 @@
 </head>
 <body>
 <!--<div th:replace="base :: nav"></div>-->
+<h3 > Profile</h3>
 First Name: <span th:text="${user.firstName}"></span> <br />
 last Name: <span th:text="${user.lastName}"></span> <br />
 <!--Gravatar url: <span th:text="${user.gravatar}"></span> <br />-->
@@ -27,7 +28,9 @@ Hobby: <span th:text="${user.hobby}"></span> <br />
     <!--Roles: <span sec:authentication="principal.authorities">-->
     <!--[ROLE_USER, ROLE_ADMIN]</span><br /><br />-->
 <!--</div>-->
-<!--I added and imported Authentication can be removed if not-->
-<a th:href="@{/edit/{id}(id=${user.username})}">Edit</a>
+<!--I added and imported Authentication can be removed if not work-->
+<!--<a th:href="@{/edit/{id}(id=${user.username})}">Edit</a>-->
+<a th:href="@{/edit/{id}(id=${user.username})}">Edit</a><br />
+<a href="/">Back to home page</a>
 </body>
 </html>

@@ -128,8 +128,10 @@ public class HomeController {
 
     @RequestMapping("/edit/{username}")
     public String userUpdate(@PathVariable("username") String username, Model model) {
-        model.addAttribute("user", userService.getCurrentUser());
-        model.addAttribute("user", messageRepository.findByUsername(username));
+//        model.addAttribute("user", userService.getCurrentUser());
+//        model.addAttribute("user", messageRepository.findByUsername(username));
+        username = userService.getCurrentUser().getUsername();
+        model.addAttribute("user", userRepository.findByUsername(username));
         return "registration";
     }
 //    @RequestMapping("/delete/{id}")
