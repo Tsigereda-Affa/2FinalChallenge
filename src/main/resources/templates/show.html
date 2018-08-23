@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="www.thymeleaf.org">
+<html lang="en" xmlns:th="www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8" />
     <title>Title</title>
@@ -11,7 +11,23 @@ last Name: <span th:text="${user.lastName}"></span> <br />
 <!--Gravatar url: <span th:text="${user.gravatar}"></span> <br />-->
 Email: <span th:text="${user.email}"></span> <br />
 Hobby: <span th:text="${user.hobby}"></span> <br />
+<!--<div sec:authorize="isAuthenticated()">-->
+    <!--This content is only shown to authenticated users.<br />-->
 
+    <!--<div sec:authorize="hasAuthority('ROLE_ADMIN')" >-->
+        <!--This content is only shown to administrators.-->
+    <!--</div>-->
+
+    <!--<div sec:authorize="hasAuthority('ROLE_USER')" >-->
+        <!--This content is only shown to users.-->
+
+    <!--</div>-->
+
+    <!--Logged user: <span sec:authentication="name"> The value of the "name" property of the authentication object should appear here.</span><br />-->
+    <!--Roles: <span sec:authentication="principal.authorities">-->
+    <!--[ROLE_USER, ROLE_ADMIN]</span><br /><br />-->
+<!--</div>-->
+<!--I added and imported Authentication can be removed if not-->
 <a th:href="@{/edit/{id}(id=${user.username})}">Edit</a>
 </body>
 </html>
