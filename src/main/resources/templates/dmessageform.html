@@ -1,0 +1,38 @@
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+<h1>Add Direct Message</h1>
+<form  action="#" th:action="@{/processDmessage}"
+       th:object="${dmessage}" method="post">
+    <input type="hidden" th:field="*{id}" />
+    <mark><strong>
+    <span th:if="${#fields.hasErrors('content')}"
+          th:errors="*{content}">Message Error</span>
+        <textarea id="content" placeholder="Dmessage"
+                  th:field="*{content}"
+                  row="3"/><br />
+    </strong></mark>
+
+    Send By :<input type="text" th:field="*{sendby}" />
+    <span th:if="${#fields.hasErrors('sendby')}"
+          th:errors="sendby"></span><br />
+
+    Send To :<input type="text" th:field="*{sendto}" />
+    <span th:if="${#fields.hasErrors('sendto')}"
+          th:errors="sendto"></span><br />
+
+    Send Date :<input type="text" th:field="*{senddate}" />
+    <span th:if="${#fields.hasErrors('senddate')}"
+          th:errors="senddate"></span><br />
+<!--the send sushed be send by using find by ussername-->
+    <button type="submit" class="btn bnt-default">Send</button>
+
+    <!--<a href="/">Back to home page</a>-->
+
+</form>
+
+</body>
+</html>

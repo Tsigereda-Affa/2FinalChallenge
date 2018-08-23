@@ -25,6 +25,9 @@ public class HomeController {
     @Autowired
     MessageRepository messageRepository;
 
+    @Autowired
+    DmessageRepository dmessageRepository;
+
     @RequestMapping(value = "/register", method = RequestMethod.GET)
     public String showRegistrationPage(Model model) {
         model.addAttribute("user", new User());
@@ -145,6 +148,34 @@ public class HomeController {
         model.addAttribute("user", userRepository.findByUsername(username));
         return "show";
     }
+
+    @GetMapping("/dmessage")
+    public String dmessageForm(Model model) {
+        model.addAttribute("dmessage", new Dmessage());
+        return "dmessageform";
+    }
+
+    @PostMapping("/processDmessage")
+    public String processDmessageForm(@ModelAttribute Dmessage dmessage, BindingResult result, Model model)
+    {
+//        String username = getUser().getUsername();
+//        message.setUsername(username);
+//        messageRepository.save(message);
+//        model.addAttribute("messages", messageRepository.findByUsername(username));
+//        return "";
+
+        if (result.hasErrors()) {
+
+            return "dmessageform";
+        }
+        String username = getUser().getUsername();
+        dmessage.setUsername(username);
+        dmessageRepository.save(dmessage);
+        model.addAttribute("dmessages", dmessageRepository.findByUsername(username));
+        return "redirect:/dmessage";
+
+    }
+
 private User getUser(){
     Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
     String currentusername = authentication.getName();
