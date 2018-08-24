@@ -11,7 +11,7 @@ public class Dmessage {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    private String content;
+    private String dcontent;
     private String sendby;
     private String sendto;
     private String username;
@@ -25,12 +25,12 @@ public class Dmessage {
         this.id = id;
     }
 
-    public String getContent() {
-        return content;
+    public String getDcontent() {
+        return dcontent;
     }
 
-    public void setContent(String content) {
-        this.content = content;
+    public void setDcontent(String dcontent) {
+        this.dcontent = dcontent;
     }
 
     public String getSendby() {

@@ -33,6 +33,7 @@ Hobby: <span th:text="${user.hobby}"></span> <br />
 <a th:href="@{/edit/{id}(id=${user.username})}">Edit profile</a><br />
 <a href="/">Back to home page</a><br />
 <a href="/dmessage">Add A Direct Message</a><br />
-<a href="/direct">Check A Direct Message</a>
+<!--<a th:href="@{/profile/{id}(id=${message.username})}">Profile</a>-->
+<a th:href="@{/direct/{id}(id=${user.username})}">Check A Direct Message</a>
 </body>
 </html>

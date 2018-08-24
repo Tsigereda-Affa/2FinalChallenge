@@ -36,6 +36,9 @@ public class User {
     @Column(name= "hobby")
     private String hobby;
 
+    @Column(name= "sendto")
+    private String sendto;
+
 
     public User(String email, String password, String firstName, String lastName, boolean enabled, String username) {
         this.email = email;
@@ -141,5 +144,13 @@ public class User {
 
     public void setHobby(String hobby) {
         this.hobby = hobby;
+    }
+
+    public String getSendto() {
+        return sendto;
+    }
+
+    public void setSendto(String sendto) {
+        this.sendto = sendto;
     }
 }

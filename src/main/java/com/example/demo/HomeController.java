@@ -169,17 +169,20 @@ public class HomeController {
             return "dmessageform";
         }
         String username = getUser().getUsername();
+//        dmessage.setSendby(username);
         dmessage.setUsername(username);
         dmessageRepository.save(dmessage);
-        model.addAttribute("dmessages", dmessageRepository.findByUsername(username));
-        return "redirect:/dmessage";
+        model.addAttribute("dmessages", dmessageRepository.findByusername(username));
+     return "redirect:/dmessage";
+//        return "redirect:/";
+
 
     }
 
     @RequestMapping("/direct/{username}")
     public String dmessageDetail(@PathVariable("username") String username, Model model) {
-//        username = userService.getCurrentUser().getUsername();
-        model.addAttribute("user", dmessageRepository.findByUsername(username));
+//       User username = userService.getCurrentUser();
+        model.addAttribute("user", dmessageRepository.findByusername(username));
         return "dshow";
     }
 

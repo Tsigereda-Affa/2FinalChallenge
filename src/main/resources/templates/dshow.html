@@ -6,13 +6,13 @@
 </head>
 <body>
 <!--<div th:replace="base :: nav"></div>-->
-<h3 > Message</h3>
-Direct message: <span th:text="${dmessage.content}"></span> <br />
+<h3 > Direct Message</h3>
+Direct message: <span th:text="${user.dcontent}"></span> <br />
 
-Send By: <span th:text="${dmessage.sendby}"></span> <br />
-Send To: <span th:text="${dmessage.sendto}"></span> <br />
+<!--Send By: <span th:text="${user.sendby}"></span> <br />-->
+Send To: <span th:text="${user.sendto}"></span> <br />
 
-Send Date: <span th:text="${dmessage.senddate}"></span> <br />
+Send Date: <span th:text="${user.senddate}"></span> <br />
 
 <a href="/">Back to home page</a>
 

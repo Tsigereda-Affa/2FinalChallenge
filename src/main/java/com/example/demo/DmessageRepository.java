@@ -5,5 +5,5 @@ import org.springframework.data.repository.CrudRepository;
 import java.util.ArrayList;
 
 public interface DmessageRepository extends CrudRepository<Dmessage, Long>{
-    ArrayList<Dmessage> findByUsername(String username);
+    ArrayList<Dmessage> findByusername(String username);
 }
