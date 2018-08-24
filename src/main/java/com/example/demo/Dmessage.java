@@ -15,7 +15,7 @@ public class Dmessage {
     private String sendby;
     private String sendto;
     private String username;
-    private String sentdate;
+   private String senddate;
 
     public long getId() {
         return id;
@@ -53,17 +53,18 @@ public class Dmessage {
         return username;
     }
 
-    public String getSentdate() {
-        return sentdate;
-    }
-
-    public void setSentdate(String sentdate) {
-        this.sentdate = sentdate;
-    }
 
     public void setUsername(String username) {
         this.username = username;
 
 
+    }
+
+    public String getSenddate() {
+        return senddate;
+    }
+
+    public void setSenddate(String senddate) {
+        this.senddate = senddate;
     }
 }

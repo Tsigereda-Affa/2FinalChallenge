@@ -176,6 +176,13 @@ public class HomeController {
 
     }
 
+    @RequestMapping("/direct/{username}")
+    public String dmessageDetail(@PathVariable("username") String username, Model model) {
+//        username = userService.getCurrentUser().getUsername();
+        model.addAttribute("user", dmessageRepository.findByUsername(username));
+        return "dshow";
+    }
+
 private User getUser(){
     Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
     String currentusername = authentication.getName();

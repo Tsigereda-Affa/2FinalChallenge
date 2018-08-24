@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+</head>
+<body>
+<!--<div th:replace="base :: nav"></div>-->
+<h3 > Message</h3>
+Direct message: <span th:text="${dmessage.content}"></span> <br />
+
+Send By: <span th:text="${dmessage.sendby}"></span> <br />
+Send To: <span th:text="${dmessage.sendto}"></span> <br />
+
+Send Date: <span th:text="${dmessage.senddate}"></span> <br />
+
+<a href="/">Back to home page</a>
+
+
+</body>
+
+</html>
