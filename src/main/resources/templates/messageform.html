@@ -17,7 +17,7 @@
                   row="3"/><br />
     </strong></mark>
 
-    Posted Date :<input type="text" th:field="*{posteddate}" />
+    Posted Date :<input type="date" th:field="*{posteddate}" />
     <span th:if="${#fields.hasErrors('posteddate')}"
           th:errors="posteddate"></span><br />
 
@@ -27,7 +27,8 @@
 
     <button type="submit" class="btn bnt-default">Submit</button>
 
-    <a href="/">Back to home page</a>
+
+    <div th:replace="base :: nav"></div>
 
 </form>
 

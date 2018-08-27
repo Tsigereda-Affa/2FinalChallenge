@@ -5,8 +5,9 @@
 </head>
 <body>
 <h3> Direct Message</h3>
-<form  action="#" th:action="@{/processDmessage}"
-       th:object="${dmessage}" method="post">
+<form autocomplete="off" action="#" th:action="@{/processDmessage}"
+       th:object="${dmessage}" method="post"
+>
     <input type="hidden" th:field="*{id}" />
     <mark><strong>
     <span th:if="${#fields.hasErrors('dcontent')}"
@@ -31,13 +32,13 @@
     <span th:if="${#fields.hasErrors('sendto')}"
           th:errors="sendto"></span><br />
 
-    Send Date :<input type="text" th:field="*{senddate}" />
+    Send Date :<input type="date" th:field="*{senddate}" />
     <span th:if="${#fields.hasErrors('senddate')}"
           th:errors="senddate"></span><br />
 <!--the send sushed be send by using find by ussername-->
     <button type="submit" class="btn bnt-default">Send</button>
+    <div th:replace="base :: nav"></div>
 
-    <a href="/">Back to home page</a>
 
 </form>
 
